@@ -1,0 +1,2 @@
+import{useEffect,useState}from"react";import{api}from"../api";
+export default function AuditLogs(){const[a,setA]=useState([]);useEffect(()=>{api("/audit").then(setA)},[]);return <><div className="page-head"><div><p>Security & compliance</p><h1>Audit Logs</h1></div></div><div className="table">{a.map(x=><div className="table-row" key={x.id}><span>{x.action}<small>{x.entity_type||"-"}</small></span><span>{x.user_name||"System"}</span><span>{x.branch_name||"-"}</span><span>{new Date(x.created_at).toLocaleString("en-LK")}</span></div>)}</div></>}
